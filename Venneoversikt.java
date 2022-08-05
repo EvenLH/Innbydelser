@@ -37,6 +37,14 @@ public class Venneoversikt {
     leseren.close();
   }//Metoden lesVenner slutter.
 
+  public void visVenner() {
+    System.out.println(" ");
+    System.out.println("VENNER");
+    for(String noekkel: venneboken.keySet()) {
+      System.out.println("* " + venneboken.get(noekkel).hentFulltNavn());
+    }
+  }//Metoden visVenner slutter.
+
   public void nyVenn() {
     Scanner skrift = new Scanner(System.in);
     System.out.print("Angi alle fornavn: ");
@@ -61,12 +69,9 @@ public class Venneoversikt {
     }
   }//Metoden nyVenn slutter.
 
-  public void visVenner() {
-    System.out.println("VENNER");
-    for(String noekkel: venneboken.keySet()) {
-      System.out.println(venneboken.get(noekkel).hentFulltNavn());
-    }
-  }//Metoden visVenner slutter.
+  public void redigerVenn() {
+    System.out.println("Metoden redigerVenn er uferdig.");
+  }//Metoden redigerVenn slutter.
 
   public void slettVenn() {
     Scanner skrift = new Scanner(System.in);

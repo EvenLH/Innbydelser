@@ -52,6 +52,10 @@ public class Interesseoversikt {
     leseren.close();
   }//Metoden lesInteresser slutter.
 
+  public void visInteresser() {
+    System.out.println("Metoden visInteresser er uferdig.");
+  }//Metoden visInteresser slutter.
+
   public void nyInteresse() {
     Scanner skrift = new Scanner(System.in);
     System.out.print("Angi interessens navn: ");
@@ -71,12 +75,8 @@ public class Interesseoversikt {
   }//Metoden nyInteresse slutter.
 
   public void redigerInteresse() {
-    //KODE
+    System.out.println("Metoden redigerInteresse er uferdig.");
   }//Metoden redigerInteresse slutter.
-
-  public void visInteresser() {
-    //KODE
-  }//Metoden visInteresser slutter.
 
   public void slettInteresse() {
     Scanner leseren = new Scanner(System.in);

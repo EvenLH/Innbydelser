@@ -31,14 +31,31 @@ public class Hendelsesoversikt {
     while(leseren.hasNextLine()) {
       String linjen = leseren.nextLine();
       String[] midlArray = linjen.strip().split(";");
-      hendelsesboken.put(midlArray[0],
-      new Hendelse(midlArray[0],Integer.parseInt(midlArray[1]),
-      Integer.parseInt(midlArray[2]),Integer.parseInt(midlArray[3]),
-      Integer.parseInt(midlArray[4]),midlArray[5])); //Utsagn delt i 4 linjer.
+      hendelsesboken.put(midlArray[0],new Hendelse(midlArray[0],midlArray[1],midlArray[2],midlArray[3],midlArray[4],midlArray[5])); //Utsagn delt i 4 linjer.
     }
 
     leseren.close();
   }//Metoden lesHendelser slutter.
+
+  public void visHendelser() {
+    System.out.println(" ");
+    System.out.println("HENDELSER");
+
+    ArrayList<Hendelse> midlArray = new ArrayList<Hendelse>();
+    for(String noekkel: hendelsesboken.keySet()) {
+      midlArray.add(hendelsesboken.get(noekkel));
+    }
+
+    while(midlArray.size() > 0) {
+      int indeksTidligste = 0;
+      for(int i = 0; i < midlArray.size(); i++) {
+        if(midlArray.get(i).hentDatoSomTall() < midlArray.get(indeksTidligste).hentDatoSomTall()) {
+          indeksTidligste = i;
+        }
+      }
+      System.out.println(midlArray.remove(indeksTidligste).hentHendelseMedDato());
+    }
+  }//Metoden visHendelser slutter.
 
   public void nyHendelse() {
     Scanner skrift = new Scanner(System.in);
@@ -49,13 +66,13 @@ public class Hendelsesoversikt {
     String svar = skrift.nextLine();
     if(svar.equalsIgnoreCase("Ja")) {
       System.out.print("Angi aar (fire siffer): ");
-      int aa = Integer.parseInt(skrift.nextLine());
+      String aa = skrift.nextLine();
       System.out.print("Angi maaned (to siffer): ");
-      int m = Integer.parseInt(skrift.nextLine());
+      String m = skrift.nextLine();
       System.out.print("Angi dag (to siffer): ");
-      int d = Integer.parseInt(skrift.nextLine());
+      String d = skrift.nextLine();
       System.out.print("Angi klokkeslett (fire siffer): ");
-      int k = Integer.parseInt(skrift.nextLine());
+      String k = skrift.nextLine();
       hendelsesboken.put(n, new Hendelse(n, aa, m, d, k));
     }
     else {
@@ -73,12 +90,9 @@ public class Hendelsesoversikt {
     }
   }//Metoden nyHendelse slutter.
 
-  public void visHendelser() {
-    System.out.println("HENDELSER");
-    for(String noekkel: hendelsesboken.keySet()) {
-      System.out.println(hendelsesboken.get(noekkel).hentHendelseMedDato());
-    }
-  }//Metoden visHendelser slutter.
+  public void redigerHendelse() {
+    System.out.println("Metoden redigerHendelse er uferdig.");
+  }//Metoden redigerHendelse slutter.
 
   public void slettHendelse() {
     Scanner leseren = new Scanner(System.in);

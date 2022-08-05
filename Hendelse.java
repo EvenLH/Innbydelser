@@ -1,21 +1,21 @@
 public class Hendelse {
   String hendelsesnavn;
-  int startaar;
-  int startmnd;
-  int startdag;
-  int startklokken;
+  String startaar;
+  String startmnd;
+  String startdag;
+  String startklokken;
   String beskrivelse;
 
   public Hendelse(String h) {
     hendelsesnavn = h;
-    startaar = 0;
-    startmnd = 0;
-    startdag = 0;
-    startklokken = 0;
+    startaar = "????";
+    startmnd = "??";
+    startdag = "??";
+    startklokken = "????";
     beskrivelse = null;
   }//Metoden konstruktør (1) slutter.
 
-  public Hendelse(String n, int aa, int m, int d, int k) {
+  public Hendelse(String n, String aa, String m, String d, String k) {
     hendelsesnavn = n;
     startaar = aa;
     startmnd = m;
@@ -24,7 +24,7 @@ public class Hendelse {
     beskrivelse = null;
   }//Metoden konstruktør (2) slutter.
 
-  public Hendelse(String n, int aa, int m, int d, int k, String b) {
+  public Hendelse(String n, String aa, String m, String d, String k, String b) {
     hendelsesnavn = n;
     startaar = aa;
     startmnd = m;
@@ -42,19 +42,19 @@ public class Hendelse {
     return hendelsesnavn;
   }//Metoden hentHendelsesnavn slutter.
 
-  public int hentStartaar() {
+  public String hentStartaar() {
     return startaar;
   }//Metoden hentStartaar slutter.
 
-  public int hentStartmnd() {
+  public String hentStartmnd() {
     return startmnd;
   }//Metoden hentStartmnd slutter.
 
-  public int hentStartdag() {
+  public String hentStartdag() {
     return startdag;
   }//Metoden hentStartdag slutter.
 
-  public int hentStartklokken() {
+  public String hentStartklokken() {
     return startklokken;
   }//Metoden hentStartklokken slutter.
 
@@ -63,33 +63,13 @@ public class Hendelse {
   }//Metoden hentBeskrivelse slutter.
 
   public String hentHendelseMedDato() {
-    String hmd = hendelsesnavn;
-
-    if(startaar >= 1) {
-      hmd = hmd.concat(" (" + startaar);
-    }
-    else {
-      hmd = hmd.concat(" (????");
-    }
-
-    if(startmnd >= 1) {
-      hmd = hmd.concat("-" + startmnd);
-    }
-    else {
-      hmd = hmd.concat("-??");
-    }
-
-    if(startdag >= 1) {
-      hmd = hmd.concat("-" + startdag);
-    }
-    else {
-      hmd = hmd.concat("-??");
-    }
-
-    hmd = hmd.concat(")");
-
-    return hmd;
+    return "* " + startaar + "-" + startmnd + "-" + startdag + " " + hendelsesnavn;
   }//Metoden hentHendelseMedDato.
+
+  public int hentDatoSomTall() {
+    String datoStreng = startaar + startmnd + startdag;
+    return Integer.parseInt(datoStreng);
+  }
 
   public String hentLagerStreng() {
     return hendelsesnavn + ";" + startaar + ";" + startmnd + ";" + startdag + ";" + startklokken + ";" + beskrivelse;
