@@ -74,10 +74,6 @@ public class Interesseoversikt {
     }
   }//Metoden nyInteresse slutter.
 
-  public void redigerInteresse() {
-    System.out.println("Metoden redigerInteresse er uferdig.");
-  }//Metoden redigerInteresse slutter.
-
   public void slettInteresse() {
     Scanner leseren = new Scanner(System.in);
     System.out.println("Angi interesse til sletting: ");

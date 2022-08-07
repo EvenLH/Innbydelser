@@ -52,9 +52,6 @@ public class Evensinnbydelser {
       else if(befaling.equalsIgnoreCase("ny V")) {
         venneoversikten.nyVenn();
       }
-      else if(befaling.equalsIgnoreCase("rediger V")) {
-        venneoversikten.redigerVenn();
-      }
       else if(befaling.equalsIgnoreCase("slett V")) {
         venneoversikten.slettVenn();
       }
@@ -65,9 +62,6 @@ public class Evensinnbydelser {
       else if(befaling.equalsIgnoreCase("ny H")) {
         hendelsesoversikten.nyHendelse();
       }
-      else if(befaling.equalsIgnoreCase("rediger H")) {
-        hendelsesoversikten.redigerHendelse();
-      }
       else if(befaling.equalsIgnoreCase("slett H")) {
         hendelsesoversikten.slettHendelse();
       }
@@ -77,9 +71,6 @@ public class Evensinnbydelser {
       }
       else if(befaling.equalsIgnoreCase("ny I")) {
         interesseoversikten.nyInteresse();
-      }
-      else if(befaling.equalsIgnoreCase("rediger I")) {
-        interesseoversikten.redigerInteresse();
       }
       else if(befaling.equalsIgnoreCase("slett I")) {
         interesseoversikten.slettInteresse();
@@ -105,7 +96,6 @@ public class Evensinnbydelser {
     System.out.println(" ");
     System.out.println("vis V - vis venner.");
     System.out.println("ny V - legg til venn.");
-    System.out.println("rediger V - rediger venn.");
     System.out.println("slett V - slett venn.");
   }//Metoden valgVenner slutter.
 
@@ -113,7 +103,6 @@ public class Evensinnbydelser {
     System.out.println(" ");
     System.out.println("vis H - vis hendelser.");
     System.out.println("ny H - legg til hendelse.");
-    System.out.println("rediger H - rediger hendelse.");
     System.out.println("slett H - slett hendelse.");
   }//Metoden valgHendelser slutter.
 
@@ -121,7 +110,6 @@ public class Evensinnbydelser {
     System.out.println(" ");
     System.out.println("vis I - vis interesser.");
     System.out.println("ny I - legg til interesse.");
-    System.out.println("rediger I - rediger interesse.");
     System.out.println("slett I - slett interesse.");
   }//Metoden valgInteresser slutter.
 

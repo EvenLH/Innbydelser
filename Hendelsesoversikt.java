@@ -90,10 +90,6 @@ public class Hendelsesoversikt {
     }
   }//Metoden nyHendelse slutter.
 
-  public void redigerHendelse() {
-    System.out.println("Metoden redigerHendelse er uferdig.");
-  }//Metoden redigerHendelse slutter.
-
   public void slettHendelse() {
     Scanner leseren = new Scanner(System.in);
     System.out.println("Angi hendelse til sletting: ");

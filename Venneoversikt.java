@@ -47,57 +47,43 @@ public class Venneoversikt {
 
   public void nyVenn() {
     Scanner skrift = new Scanner(System.in);
-    System.out.print("Angi alle fornavn: ");
-    String f = skrift.nextLine();
-    System.out.print("Angi alle mellomnavn: ");
-    String m = skrift.nextLine();
-    System.out.print("Angi alle etternavn: ");
-    String e = skrift.nextLine();
-    System.out.print("Angi et kallenavn: ");
-    String k = skrift.nextLine();
 
-    venneboken.put(k, new Venn(f,m,e,k));
+    String valget = "ja";
+    while(valget.equalsIgnoreCase("ja")) {
+      System.out.print("Angi alle fornavn: ");
+      String f = skrift.nextLine();
+      System.out.print("Angi alle mellomnavn: ");
+      String m = skrift.nextLine();
+      System.out.print("Angi alle etternavn: ");
+      String e = skrift.nextLine();
+      System.out.print("Angi et kallenavn: ");
+      String k = skrift.nextLine();
+      venneboken.put(k, new Venn(f,m,e,k));
 
-    try {
-      FileWriter vennefilen = new FileWriter("Venner.txt", true);
-      vennefilen.write(venneboken.get(k).hentLagerStreng() + "\n");
-      vennefilen.close();
-      System.out.println("Venn lagret (" + venneboken.get(k).hentLagerStreng() + ").");
+      System.out.print("Vil du legge til flere venner? ");
+      valget = skrift.nextLine();
     }
-    catch(IOException ioe) {
-      System.out.println("Feil (" + ioe + ").");
-    }
+
+    this.oppdatereVennefil();
   }//Metoden nyVenn slutter.
-
-  public void redigerVenn() {
-    Scanner leseren = new Scanner(System.in);
-    System.out.print("Hvilken venn skal redigeres? Kallenavn: ");
-    String redigeres = leseren.nextLine();
-    if(venneboken.containsKey(redigeres) == false) {
-      System.out.println("Ingen slik venn finnes.");
-    }
-    else {
-      System.out.println("Fornavn: " + venneboken.get(redigeres).hentFornavn());
-      System.out.println("Mellomnavn: " + venneboken.get(redigeres).hentMellomnavn());
-      System.out.println("Etternavn: " + venneboken.get(redigeres).hentEtternavn());
-      System.out.println("Kallenavn: " + venneboken.get(redigeres).hentKallenavn());
-      System.out.println(" ");
-      System.out.print("Angi nytt fornavn: ");
-      venneboken.get(redigeres).endreFornavn(leseren.nextLine());
-      System.out.print("Angi nytt mellomnavn: ");
-      venneboken.get(redigeres).endreMellomnavn(leseren.nextLine());
-      System.out.print("Angi nytt etternavn: ");
-      venneboken.get(redigeres).endreEtternavn(leseren.nextLine());
-    }
-  }//Metoden redigerVenn slutter.
 
   public void slettVenn() {
     Scanner skrift = new Scanner(System.in);
-    System.out.print("Angi kallenavn til sletting: ");
-    String kallenavnet = skrift.nextLine();
 
-    venneboken.remove(kallenavnet);
+    String valget = "ja";
+    while(valget.equalsIgnoreCase("ja")) {
+      System.out.print("Angi kallenavn til sletting: ");
+      String kallenavnet = skrift.nextLine();
+      venneboken.remove(kallenavnet);
 
+      System.out.print("Vil du slette flere venner? ");
+      valget = skrift.nextLine();
+    }
+
+    this.oppdatereVennefil();
+  }//Metoden slettVenn slutter.
+
+  public void oppdatereVennefil() {
     ArrayList<String> midl = new ArrayList<String>();
     for(String noekkel: venneboken.keySet()) {
       midl.add(venneboken.get(noekkel).hentLagerStreng());
@@ -113,7 +99,7 @@ public class Venneoversikt {
     catch(IOException ioe) {
       System.out.println("Feil (" + ioe + ").");
     }
-  }//Metoden slettVenn slutter.
+  }//Metoden oppdatereVennefil slutter.
 
 //----------------------------------------------------------------
 }//Klassen Venneoversikt slutter.
