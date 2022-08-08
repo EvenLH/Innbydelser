@@ -59,44 +59,53 @@ public class Hendelsesoversikt {
 
   public void nyHendelse() {
     Scanner skrift = new Scanner(System.in);
-    System.out.print("Angi hendelsens navn: ");
-    String n = skrift.nextLine();
 
-    System.out.println("Om du ogsaa vil angi dato og klokkeslett, skriv 'ja'.");
-    String svar = skrift.nextLine();
-    if(svar.equalsIgnoreCase("Ja")) {
-      System.out.print("Angi aar (fire siffer): ");
-      String aa = skrift.nextLine();
-      System.out.print("Angi maaned (to siffer): ");
-      String m = skrift.nextLine();
-      System.out.print("Angi dag (to siffer): ");
-      String d = skrift.nextLine();
-      System.out.print("Angi klokkeslett (fire siffer): ");
-      String k = skrift.nextLine();
-      hendelsesboken.put(n, new Hendelse(n, aa, m, d, k));
-    }
-    else {
-      hendelsesboken.put(n, new Hendelse(n));
+    String valget = "ja";
+    while(valget.equalsIgnoreCase("ja")) {
+      System.out.print("Angi hendelsens navn: ");
+      String n = skrift.nextLine();
+
+      System.out.print("Vil du angi dato og klokkeslett? ");
+      String svar = skrift.nextLine();
+      if(svar.equalsIgnoreCase("ja")) {
+        System.out.print("Angi aar (fire siffer): ");
+        String aa = skrift.nextLine();
+        System.out.print("Angi maaned (to siffer): ");
+        String m = skrift.nextLine();
+        System.out.print("Angi dag (to siffer): ");
+        String d = skrift.nextLine();
+        System.out.print("Angi klokkeslett (fire siffer): ");
+        String k = skrift.nextLine();
+        hendelsesboken.put(n, new Hendelse(n, aa, m, d, k));
+      }
+      else {
+        hendelsesboken.put(n, new Hendelse(n));
+      }
+
+      System.out.print("Vil du legge til flere hendelser? ");
+      valget = skrift.nextLine();
     }
 
-    try {
-      FileWriter hendelsesfilen = new FileWriter("hendelser.txt", true);
-      hendelsesfilen.write(hendelsesboken.get(n).hentLagerStreng() + "\n");
-      hendelsesfilen.close();
-      System.out.println("Hendelse lagret (" + hendelsesboken.get(n).hentLagerStreng() + ").");
-    }
-    catch(IOException ioe) {
-      System.out.println("Feil (" + ioe + ").");
-    }
+    this.oppdatereHendelsesfil();
   }//Metoden nyHendelse slutter.
 
   public void slettHendelse() {
-    Scanner leseren = new Scanner(System.in);
-    System.out.println("Angi hendelse til sletting: ");
-    String hendelsesnavnet = leseren.nextLine();
+    Scanner skrift = new Scanner(System.in);
 
-    hendelsesboken.remove(hendelsesnavnet);
+    String valget = "ja";
+    while(valget.equalsIgnoreCase("ja")) {
+      System.out.print("Angi hendelse til sletting: ");
+      String hendelsesnavnet = skrift.nextLine();
+      hendelsesboken.remove(hendelsesnavnet);
 
+      System.out.print("Vil du slette flere hendelser? ");
+      valget = skrift.nextLine();
+    }
+
+    this.oppdatereHendelsesfil();
+  }//Metoden slettHendelse slutter.
+
+  public void oppdatereHendelsesfil() {
     ArrayList<String> midl = new ArrayList<String>();
     for(String noekkel: hendelsesboken.keySet()) {
       midl.add(hendelsesboken.get(noekkel).hentLagerStreng());
@@ -112,7 +121,7 @@ public class Hendelsesoversikt {
     catch(IOException ioe) {
       System.out.println("Feil (" + ioe + ").");
     }
-  }//Metoden slettHendelse slutter.
+  }//Metoden oppdatereHendelsesfil slutter.
 
 //----------------------------------------------------------------
 }//Klassen Hendelsesoversikt slutter.

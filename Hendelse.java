@@ -8,10 +8,10 @@ public class Hendelse {
 
   public Hendelse(String h) {
     hendelsesnavn = h;
-    startaar = "????";
-    startmnd = "??";
-    startdag = "??";
-    startklokken = "????";
+    startaar = null;
+    startmnd = null;
+    startdag = null;
+    startklokken = null;
     beskrivelse = null;
   }//Metoden konstruktør (1) slutter.
 
