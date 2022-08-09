@@ -15,7 +15,6 @@ public class Venneoversikt {
   }//Metoden konstruktør slutter.
 
 //----------------------------------------------------------------
-
   public void lesVenner(String filnavn) {
     File vennefilen = new File(filnavn);
     Scanner leseren;
@@ -65,6 +64,7 @@ public class Venneoversikt {
       valget = skrift.nextLine();
     }
 
+    skrift.close();
     this.oppdatereVennefil();
   }//Metoden nyVenn slutter.
 
@@ -104,6 +104,7 @@ public class Venneoversikt {
       valget = skrift.nextLine();
     }
 
+    skrift.close();
     this.oppdatereVennefil();
   }//Metoden redigerVenn slutter.
 
@@ -120,6 +121,7 @@ public class Venneoversikt {
       valget = skrift.nextLine();
     }
 
+    skrift.close();
     this.oppdatereVennefil();
   }//Metoden slettVenn slutter.
 

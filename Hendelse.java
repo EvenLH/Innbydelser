@@ -56,18 +56,40 @@ public class Hendelse {
   public String hentHendelseMedDato() {
     String hmd = "* ";
 
-    if() {}
-    return "* " + startaar + "-" + startmnd + "-" + startdag + " " + hendelsesnavn;
+    if(!startaar.isEmpty()) {
+      hmd = hmd.concat(startaar + "-");
+    }
+    else {
+      hmd = hmd.concat("????-");
+    }
+
+    if(!startmnd.isEmpty()) {
+      hmd = hmd.concat(startmnd + "-");
+    }
+    else {
+      hmd = hmd.concat("??-");
+    }
+
+    if(!startdag.isEmpty()) {
+      hmd = hmd.concat(startdag + " ");
+    }
+    else {
+      hmd = hmd.concat("?? ");
+    }
+
+    hmd = hmd.concat(hendelsesnavn);
+
+    return hmd;
   }//Metoden hentHendelseMedDato.
 
-  public int hentDatoSomTall() {
+  public long hentStarttidSomTall() {
     String datoStreng = "";
 
     if(!startaar.isEmpty()) {
       datoStreng = datoStreng.concat(startaar);
     }
     else {
-      datoStreng = datoStreng.concat("10000");
+      datoStreng = datoStreng.concat("9999");
     }
 
     if(!startmnd.isEmpty()) {
@@ -83,8 +105,16 @@ public class Hendelse {
     else {
       datoStreng = datoStreng.concat("99");
     }
-    return Integer.parseInt(datoStreng);
-  }
+
+    if(!startklokken.isEmpty()) {
+      datoStreng = datoStreng.concat(startklokken);
+    }
+    else {
+      datoStreng = datoStreng.concat("9999");
+    }
+
+    return Long.parseLong(datoStreng);
+  }//Metoden hentStarttidSomTall slutter.
 
   public String hentLagerStreng() {
     return hendelsesnavn + ";" + startaar + ";" + startmnd + ";" + startdag + ";" + startklokken + ";" + beskrivelse;

@@ -15,7 +15,6 @@ public class Hendelsesoversikt {
   }//Metoden konstruktør slutter.
 
 //----------------------------------------------------------------
-
   public void lesHendelser(String filnavn) {
     File hendelsesfilen = new File(filnavn);
     Scanner leseren;
@@ -49,7 +48,7 @@ public class Hendelsesoversikt {
     while(midlArray.size() > 0) {
       int indeksTidligste = 0;
       for(int i = 0; i < midlArray.size(); i++) {
-        if(midlArray.get(i).hentDatoSomTall() < midlArray.get(indeksTidligste).hentDatoSomTall()) {
+        if(midlArray.get(i).hentStarttidSomTall() < midlArray.get(indeksTidligste).hentStarttidSomTall()) {
           indeksTidligste = i;
         }
       }
@@ -62,6 +61,7 @@ public class Hendelsesoversikt {
 
     String valget = "ja";
     while(valget.equalsIgnoreCase("ja")) {
+      System.out.println("Hendelsesnavn maa ha minst 1 tegn, og vaere ulike alle andre hendelsesnavn.");
       System.out.print("Angi hendelsens navn: ");
       String n = skrift.nextLine();
       hendelsesboken.put(n, new Hendelse(n));
@@ -95,10 +95,57 @@ public class Hendelsesoversikt {
       valget = skrift.nextLine();
     }
 
+    skrift.close();
     this.oppdatereHendelsesfil();
   }//Metoden nyHendelse slutter.
 
-  public void redigerHendelse() {}//Metoden redigerHendelse slutter.
+  public void redigerHendelse() {
+    Scanner skrift = new Scanner(System.in);
+
+    String valget = "ja";
+    while(valget.equalsIgnoreCase("ja")) {
+      System.out.print("Angi navnet til hendelsen som skal redigeres: ");
+      String hn = skrift.nextLine();
+      System.out.println("Navn (n), aar (a), maaned (m), dag (d), klokkeslett (k), beskrivelse (b).");
+      System.out.print("Angi alt du vil redigere ved å skrive alle de aktuelle bokstavene: ");
+      String tilRedigering = skrift.nextLine().toLowerCase();
+
+      if(tilRedigering.contains("a")) {
+        System.out.print("Angi nytt aarstall (fire siffer): ");
+        hendelsesboken.get(hn).endreStartAar(skrift.nextLine());
+      }
+      if(tilRedigering.contains("m")) {
+        System.out.print("Angi ny maaned (to siffer): ");
+        hendelsesboken.get(hn).endreStartMnd(skrift.nextLine());
+      }
+      if(tilRedigering.contains("d")) {
+        System.out.print("Angi ny dag (to siffer): ");
+        hendelsesboken.get(hn).endreStartDag(skrift.nextLine());
+      }
+      if(tilRedigering.contains("k")) {
+        System.out.print("Angi nytt klokkeslett (fire siffer, uten andre tegn): ");
+        hendelsesboken.get(hn).endreStartklokken(skrift.nextLine());
+      }
+      if(tilRedigering.contains("b")) {
+        System.out.print("Skriv ny beskrivelse: ");
+        hendelsesboken.get(hn).endreBeskrivelse(skrift.nextLine());
+      }
+      if(tilRedigering.contains("n")) {
+        System.out.println("Hendelsesnavn maa ha minst 1 tegn, og vaere ulike alle andre hendelsesnavn.");
+        System.out.print("Angi hendelsens nye navn: ");
+        String nyttHendelsesnavn = skrift.nextLine();
+        hendelsesboken.get(hn).endreHendelsesnavn(nyttHendelsesnavn);
+
+        hendelsesboken.put(nyttHendelsesnavn, hendelsesboken.remove(hn));
+      }
+
+      System.out.print("Vil du redigere flere hendelser? ");
+      valget = skrift.nextLine();
+    }
+
+    skrift.close();
+    this.oppdatereHendelsesfil();
+  }//Metoden redigerHendelse slutter.
 
   public void slettHendelse() {
     Scanner skrift = new Scanner(System.in);
@@ -113,6 +160,7 @@ public class Hendelsesoversikt {
       valget = skrift.nextLine();
     }
 
+    skrift.close();
     this.oppdatereHendelsesfil();
   }//Metoden slettHendelse slutter.
 

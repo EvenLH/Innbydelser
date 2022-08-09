@@ -29,7 +29,7 @@ public class Evensinnbydelser {
     Evensinnbydelser.visValgHoved();
 
     Scanner leseren = new Scanner(System.in);
-    String befaling = "0";
+    String befaling = "ingenting";
 
     while(!befaling.equalsIgnoreCase("Av")) {
       System.out.println(" ");
@@ -87,6 +87,8 @@ public class Evensinnbydelser {
         System.out.println("Ugyldig valg.");
       }
     }
+
+    leseren.close();
   }//Metoden bruk slutter.
 
   public static void visValgHoved() {
