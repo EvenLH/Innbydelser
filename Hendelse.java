@@ -54,11 +54,35 @@ public class Hendelse {
   }//Metoden hentBeskrivelse slutter.
 
   public String hentHendelseMedDato() {
+    String hmd = "* ";
+
+    if() {}
     return "* " + startaar + "-" + startmnd + "-" + startdag + " " + hendelsesnavn;
   }//Metoden hentHendelseMedDato.
 
   public int hentDatoSomTall() {
-    String datoStreng = startaar + startmnd + startdag;
+    String datoStreng = "";
+
+    if(!startaar.isEmpty()) {
+      datoStreng = datoStreng.concat(startaar);
+    }
+    else {
+      datoStreng = datoStreng.concat("10000");
+    }
+
+    if(!startmnd.isEmpty()) {
+      datoStreng = datoStreng.concat(startmnd);
+    }
+    else {
+      datoStreng = datoStreng.concat("99");
+    }
+
+    if(!startdag.isEmpty()) {
+      datoStreng = datoStreng.concat(startdag);
+    }
+    else {
+      datoStreng = datoStreng.concat("99");
+    }
     return Integer.parseInt(datoStreng);
   }
 
