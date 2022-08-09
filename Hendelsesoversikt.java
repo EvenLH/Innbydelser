@@ -31,7 +31,7 @@ public class Hendelsesoversikt {
     while(leseren.hasNextLine()) {
       String linjen = leseren.nextLine();
       String[] midlArray = linjen.strip().split(";");
-      hendelsesboken.put(midlArray[0],new Hendelse(midlArray[0],midlArray[1],midlArray[2],midlArray[3],midlArray[4],midlArray[5])); //Utsagn delt i 4 linjer.
+      hendelsesboken.put(midlArray[0],new Hendelse(midlArray[0],midlArray[1],midlArray[2],midlArray[3],midlArray[4],midlArray[5]));
     }
 
     leseren.close();
@@ -64,22 +64,31 @@ public class Hendelsesoversikt {
     while(valget.equalsIgnoreCase("ja")) {
       System.out.print("Angi hendelsens navn: ");
       String n = skrift.nextLine();
+      hendelsesboken.put(n, new Hendelse(n));
 
-      System.out.print("Vil du angi dato og klokkeslett? ");
-      String svar = skrift.nextLine();
-      if(svar.equalsIgnoreCase("ja")) {
-        System.out.print("Angi aar (fire siffer): ");
-        String aa = skrift.nextLine();
-        System.out.print("Angi maaned (to siffer): ");
-        String m = skrift.nextLine();
-        System.out.print("Angi dag (to siffer): ");
-        String d = skrift.nextLine();
-        System.out.print("Angi klokkeslett (fire siffer): ");
-        String k = skrift.nextLine();
-        hendelsesboken.put(n, new Hendelse(n, aa, m, d, k));
+      System.out.println("Aar (a), maaned (m), dag (d), klokkeslett (k), beskrivelse (b).");
+      System.out.print("Angi alt du vil skrive inn ved å skrive alle de aktuelle bokstavene: ");
+      String hendelseSomOpprettes = skrift.nextLine().toLowerCase();
+
+      if(hendelseSomOpprettes.contains("a")) {
+        System.out.print("Angi aarstall (fire siffer): ");
+        hendelsesboken.get(n).endreStartAar(skrift.nextLine());
       }
-      else {
-        hendelsesboken.put(n, new Hendelse(n));
+      if(hendelseSomOpprettes.contains("m")) {
+        System.out.print("Angi maaned (to siffer): ");
+        hendelsesboken.get(n).endreStartMnd(skrift.nextLine());
+      }
+      if(hendelseSomOpprettes.contains("d")) {
+        System.out.print("Angi dag (to siffer): ");
+        hendelsesboken.get(n).endreStartDag(skrift.nextLine());
+      }
+      if(hendelseSomOpprettes.contains("k")) {
+        System.out.print("Angi klokkeslett (fire siffer, uten andre tegn): ");
+        hendelsesboken.get(n).endreStartklokken(skrift.nextLine());
+      }
+      if(hendelseSomOpprettes.contains("b")) {
+        System.out.print("Skriv beskrivelse: ");
+        hendelsesboken.get(n).endreBeskrivelse(skrift.nextLine());
       }
 
       System.out.print("Vil du legge til flere hendelser? ");
@@ -88,6 +97,8 @@ public class Hendelsesoversikt {
 
     this.oppdatereHendelsesfil();
   }//Metoden nyHendelse slutter.
+
+  public void redigerHendelse() {}//Metoden redigerHendelse slutter.
 
   public void slettHendelse() {
     Scanner skrift = new Scanner(System.in);

@@ -13,7 +13,7 @@ public class Venn {
   }//Metoden konstruktør slutter.
 
   public String toString() {
-    return fornavn + " " + mellomnavn + " " + etternavn + "(" + kallenavn + ")";
+    return this.hentFulltNavn();
   }//Metoden toString slutter.
 
 //----------------------------------------------------------------

@@ -8,30 +8,21 @@ public class Hendelse {
 
   public Hendelse(String h) {
     hendelsesnavn = h;
-    startaar = null;
-    startmnd = null;
-    startdag = null;
-    startklokken = null;
-    beskrivelse = null;
+    startaar = "";
+    startmnd = "";
+    startdag = "";
+    startklokken = "";
+    beskrivelse = "";
   }//Metoden konstruktør (1) slutter.
 
-  public Hendelse(String n, String aa, String m, String d, String k) {
-    hendelsesnavn = n;
-    startaar = aa;
-    startmnd = m;
-    startdag = d;
-    startklokken = k;
-    beskrivelse = null;
-  }//Metoden konstruktør (2) slutter.
-
-  public Hendelse(String n, String aa, String m, String d, String k, String b) {
-    hendelsesnavn = n;
+  public Hendelse(String h, String aa, String m, String d, String k, String b) {
+    hendelsesnavn = h;
     startaar = aa;
     startmnd = m;
     startdag = d;
     startklokken = k;
     beskrivelse = b;
-  }//Metoden konstruktør (3) slutter.
+  }//Metoden konstruktør (2) slutter.
 
   public String toString() {
     return hendelsesnavn + "(" + startaar + "-" + startmnd + "-" + startdag + ")";
@@ -74,6 +65,30 @@ public class Hendelse {
   public String hentLagerStreng() {
     return hendelsesnavn + ";" + startaar + ";" + startmnd + ";" + startdag + ";" + startklokken + ";" + beskrivelse;
   }//Metoden hentLagerStreng slutter.
+
+  public void endreHendelsesnavn(String n) {
+    hendelsesnavn = n;
+  }//Metoden endreHendelsesnavn slutter.
+
+  public void endreStartAar(String aa) {
+    startaar = aa;
+  }//Metoden endreStartAar slutter.
+
+  public void endreStartMnd(String m) {
+    startmnd = m;
+  }//Metoden endreStartMnd slutter.
+
+  public void endreStartDag(String d) {
+    startdag = d;
+  }//Metoden endreStartDag slutter.
+
+  public void endreStartklokken(String k) {
+    startklokken = k;
+  }//Metoden endreStartklokken slutter.
+
+  public void endreBeskrivelse(String b) {
+    beskrivelse = b;
+  }//Metoden endreBeskrivelse slutter.
 
 //----------------------------------------------------------------
 }//Klassen Hendelse slutter.

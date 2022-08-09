@@ -56,7 +56,8 @@ public class Venneoversikt {
       String m = skrift.nextLine();
       System.out.print("Angi alle etternavn: ");
       String e = skrift.nextLine();
-      System.out.print("Angi et kallenavn: ");
+      System.out.println("Kallenavn maa ha minst 1 tegn, og vaere ulike alle andre kallenavn.");
+      System.out.print("Angi et kallenavn (maa vaere minst 1 tegn): ");
       String k = skrift.nextLine();
       venneboken.put(k, new Venn(f,m,e,k));
 
@@ -67,12 +68,51 @@ public class Venneoversikt {
     this.oppdatereVennefil();
   }//Metoden nyVenn slutter.
 
+  public void redigerVenn() {
+    Scanner skrift = new Scanner(System.in);
+
+    String valget = "ja";
+    while(valget.equalsIgnoreCase("ja")) {
+      System.out.print("Angi kallenavnet til den som skal redigeres: ");
+      String kallenavn = skrift.nextLine();
+      System.out.println("Fornavn (f), mellomnavn (m), etternavn (e), kallenavn (k).");
+      System.out.print("Angi alt du vil redigere ved å skrive alle de aktuelle bokstavene: ");
+      String navnSomRedigeres = skrift.nextLine().toLowerCase();
+
+      if(navnSomRedigeres.contains("f")) {
+        System.out.print("Angi nytt fornavn (erstatter " + venneboken.get(kallenavn).hentFornavn() + "): ");
+        venneboken.get(kallenavn).endreFornavn(skrift.nextLine());
+      }
+      if(navnSomRedigeres.contains("m")) {
+        System.out.print("Angi nytt mellomnavn (erstatter " + venneboken.get(kallenavn).hentMellomnavn() + "): ");
+        venneboken.get(kallenavn).endreMellomnavn(skrift.nextLine());
+      }
+      if(navnSomRedigeres.contains("e")) {
+        System.out.print("Angi nytt etternavn (erstatter " + venneboken.get(kallenavn).hentEtternavn() + "): ");
+        venneboken.get(kallenavn).endreEtternavn(skrift.nextLine());
+      }
+      if(navnSomRedigeres.contains("k")) {
+        System.out.println("Kallenavn maa ha minst 1 tegn, og vaere ulike alle andre kallenavn.");
+        System.out.print("Angi nytt kallenavn (erstatter " + venneboken.get(kallenavn).hentKallenavn() + "): ");
+        String nyttKallenavn = skrift.nextLine();
+        venneboken.get(kallenavn).endreKallenavn(nyttKallenavn);
+
+        venneboken.put(nyttKallenavn, venneboken.remove(kallenavn));
+      }
+
+      System.out.print("Vil du redigere flere venner? ");
+      valget = skrift.nextLine();
+    }
+
+    this.oppdatereVennefil();
+  }//Metoden redigerVenn slutter.
+
   public void slettVenn() {
     Scanner skrift = new Scanner(System.in);
 
     String valget = "ja";
     while(valget.equalsIgnoreCase("ja")) {
-      System.out.print("Angi kallenavn til sletting: ");
+      System.out.print("Angi kallenavnet til den som skal slettes: ");
       String kallenavnet = skrift.nextLine();
       venneboken.remove(kallenavnet);
 
