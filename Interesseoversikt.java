@@ -56,31 +56,39 @@ public class Interesseoversikt {
     System.out.println("Metoden visInteresser er uferdig.");
   }//Metoden visInteresser slutter.
 
-  public void nyInteresse() {
-    Scanner skrift = new Scanner(System.in);
-    System.out.print("Angi interessens navn: ");
-    String n = skrift.nextLine();
+  public void nyInteresse(Scanner skrift) {
+    String valget = "ja";
+    while(valget.equalsIgnoreCase("ja")) {
+      System.out.print("Angi interessens navn: ");
+      String n = skrift.nextLine();
+      interesseboken.put(n, new Interesse(n));
 
-    interesseboken.put(n, new Interesse(n));
+      System.out.print("Vil du legge til flere interesser? ");
+      valget = skrift.nextLine();
+    }
 
-    try {
-      FileWriter interessefilen = new FileWriter("Interesser.txt");
-      interessefilen.write(interesseboken.get(n).hentLagerStreng() + "\n");
-      interessefilen.close();
-      System.out.println("Interesse lagret (" + interesseboken.get(n).hentLagerStreng() + ").");
-    }
-    catch(IOException ioe) {
-      System.out.println("Feil (" + ioe + ").");
-    }
+    this.oppdatereInteressefil();
   }//Metoden nyInteresse slutter.
 
-  public void slettInteresse() {
-    Scanner leseren = new Scanner(System.in);
-    System.out.println("Angi interesse til sletting: ");
-    String interessenavnet = leseren.nextLine();
+  public void redigerInteresse() {
+    System.out.println("Metoden redigerInteresse er uferdig.");
+  }//Metoden redigerInteresse slutter.
 
-    interesseboken.remove(interessenavnet);
+  public void slettInteresse(Scanner skrift) {
+    string valget = "ja";
+    while(valget.equalsIgnoreCase("ja")) {
+      System.out.println("Angi interesse til sletting: ");
+      String interessenavnet = skrift.nextLine();
+      interesseboken.remove(interessenavnet);
 
+      System.out.print("Vil du slette flere interesser? ");
+      valget = skrift.nextLine();
+    }
+
+    this.oppdatereInteressefil();
+  }//Metoden slettInteresse slutter.
+
+  public void oppdatereInteressefil() {
     ArrayList<String> midl = new ArrayList<String>();
     for(String noekkel: interesseboken.keySet()) {
       midl.add(interesseboken.get(noekkel).hentLagerStreng());
@@ -96,7 +104,7 @@ public class Interesseoversikt {
     catch(IOException ioe) {
       System.out.println("Feil (" + ioe + ").");
     }
-  }//Metoden slettInteresse slutter.
+  }//Metoden oppdatereInteressefil slutter.
 
 //----------------------------------------------------------------
 }//Klassen Interesseoversikt slutter.

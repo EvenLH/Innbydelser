@@ -44,9 +44,7 @@ public class Venneoversikt {
     }
   }//Metoden visVenner slutter.
 
-  public void nyVenn() {
-    Scanner skrift = new Scanner(System.in);
-
+  public void nyVenn(Scanner skrift) {
     String valget = "ja";
     while(valget.equalsIgnoreCase("ja")) {
       System.out.print("Angi alle fornavn: ");
@@ -64,13 +62,10 @@ public class Venneoversikt {
       valget = skrift.nextLine();
     }
 
-    skrift.close();
     this.oppdatereVennefil();
   }//Metoden nyVenn slutter.
 
-  public void redigerVenn() {
-    Scanner skrift = new Scanner(System.in);
-
+  public void redigerVenn(Scanner skrift) {
     String valget = "ja";
     while(valget.equalsIgnoreCase("ja")) {
       System.out.print("Angi kallenavnet til den som skal redigeres: ");
@@ -104,13 +99,10 @@ public class Venneoversikt {
       valget = skrift.nextLine();
     }
 
-    skrift.close();
     this.oppdatereVennefil();
   }//Metoden redigerVenn slutter.
 
-  public void slettVenn() {
-    Scanner skrift = new Scanner(System.in);
-
+  public void slettVenn(Scanner skrift) {
     String valget = "ja";
     while(valget.equalsIgnoreCase("ja")) {
       System.out.print("Angi kallenavnet til den som skal slettes: ");
@@ -121,7 +113,6 @@ public class Venneoversikt {
       valget = skrift.nextLine();
     }
 
-    skrift.close();
     this.oppdatereVennefil();
   }//Metoden slettVenn slutter.
 

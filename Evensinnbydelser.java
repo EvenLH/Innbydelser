@@ -28,13 +28,13 @@ public class Evensinnbydelser {
   public static void bruk() {
     Evensinnbydelser.visValgHoved();
 
-    Scanner leseren = new Scanner(System.in);
+    Scanner skrift = new Scanner(System.in);
     String befaling = "ingenting";
 
     while(!befaling.equalsIgnoreCase("Av")) {
       System.out.println(" ");
       System.out.print("Valg: ");
-      befaling = leseren.nextLine();
+      befaling = skrift.nextLine();
 
       if(befaling.equalsIgnoreCase("V")) {
         Evensinnbydelser.visValgVenner();
@@ -50,36 +50,39 @@ public class Evensinnbydelser {
         venneoversikten.visVenner();
       }
       else if(befaling.equalsIgnoreCase("ny V")) {
-        venneoversikten.nyVenn();
+        venneoversikten.nyVenn(skrift);
       }
       else if(befaling.equalsIgnoreCase("rediger V")) {
-        venneoversikten.redigerVenn();
+        venneoversikten.redigerVenn(skrift);
       }
       else if(befaling.equalsIgnoreCase("slett V")) {
-        venneoversikten.slettVenn();
+        venneoversikten.slettVenn(skrift);
       }
 
       else if(befaling.equalsIgnoreCase("vis H")) {
         hendelsesoversikten.visHendelser();
       }
       else if(befaling.equalsIgnoreCase("ny H")) {
-        hendelsesoversikten.nyHendelse();
+        hendelsesoversikten.nyHendelse(skrift);
       }
       else if(befaling.equalsIgnoreCase("rediger H")) {
-        hendelsesoversikten.redigerHendelse();
+        hendelsesoversikten.redigerHendelse(skrift);
       }
       else if(befaling.equalsIgnoreCase("slett H")) {
-        hendelsesoversikten.slettHendelse();
+        hendelsesoversikten.slettHendelse(skrift);
       }
 
       else if(befaling.equalsIgnoreCase("vis I")) {
         interesseoversikten.visInteresser();
       }
       else if(befaling.equalsIgnoreCase("ny I")) {
-        interesseoversikten.nyInteresse();
+        interesseoversikten.nyInteresse(skrift);
+      }
+      else if(befaling.equalsIgnoreCase("rediger I")) {
+        interesseoversikten.redigerInteresse(skrift);
       }
       else if(befaling.equalsIgnoreCase("slett I")) {
-        interesseoversikten.slettInteresse();
+        interesseoversikten.slettInteresse(skrift);
       }
 
       else if(befaling.equalsIgnoreCase("Av")) {}
@@ -88,7 +91,7 @@ public class Evensinnbydelser {
       }
     }
 
-    leseren.close();
+    skrift.close();
   }//Metoden bruk slutter.
 
   public static void visValgHoved() {

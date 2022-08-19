@@ -56,9 +56,7 @@ public class Hendelsesoversikt {
     }
   }//Metoden visHendelser slutter.
 
-  public void nyHendelse() {
-    Scanner skrift = new Scanner(System.in);
-
+  public void nyHendelse(Scanner skrift) {
     String valget = "ja";
     while(valget.equalsIgnoreCase("ja")) {
       System.out.println("Hendelsesnavn maa ha minst 1 tegn, og vaere ulike alle andre hendelsesnavn.");
@@ -95,13 +93,10 @@ public class Hendelsesoversikt {
       valget = skrift.nextLine();
     }
 
-    skrift.close();
     this.oppdatereHendelsesfil();
   }//Metoden nyHendelse slutter.
 
-  public void redigerHendelse() {
-    Scanner skrift = new Scanner(System.in);
-
+  public void redigerHendelse(Scanner skrift) {
     String valget = "ja";
     while(valget.equalsIgnoreCase("ja")) {
       System.out.print("Angi navnet til hendelsen som skal redigeres: ");
@@ -143,13 +138,10 @@ public class Hendelsesoversikt {
       valget = skrift.nextLine();
     }
 
-    skrift.close();
     this.oppdatereHendelsesfil();
   }//Metoden redigerHendelse slutter.
 
-  public void slettHendelse() {
-    Scanner skrift = new Scanner(System.in);
-
+  public void slettHendelse(Scanner skrift) {
     String valget = "ja";
     while(valget.equalsIgnoreCase("ja")) {
       System.out.print("Angi hendelse til sletting: ");
@@ -160,7 +152,6 @@ public class Hendelsesoversikt {
       valget = skrift.nextLine();
     }
 
-    skrift.close();
     this.oppdatereHendelsesfil();
   }//Metoden slettHendelse slutter.
 
